@@ -1,19 +1,64 @@
 --------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\hp\Desktop\Study Material (SNU)\Semester 5\ECO 213 - Basic
->  Data Analysis and Econometrics\End_Term_Project\Question_1\Q1.log
+       log:  C:\Users\hp\Desktop\Econometrics-End-Term-Project\Question_1\Q1.log
   log type:  text
- opened on:   4 Nov 2020, 13:20:05
+ opened on:   2 Dec 2020, 23:05:58
+
+. import excel "C:\Users\hp\Desktop\Econometrics-End-Term-Project\Question_1\sco
+> res_data.xlsx", sheet("Sheet1") firstrow clear
+
+. codebook course_result
+
+--------------------------------------------------------------------------------
+course_result                                                      course_result
+--------------------------------------------------------------------------------
+
+                  type:  string (str4)
+
+         unique values:  2                        missing "":  0/36
+
+            tabulation:  Freq.  Value
+                            17  "Fail"
+                            19  "Pass"
+
+. 
+. 
+. 
+. codebook test_score
+
+--------------------------------------------------------------------------------
+test_score                                                            test_score
+--------------------------------------------------------------------------------
+
+                  type:  numeric (byte)
+
+                 range:  [9,80]                       units:  1
+         unique values:  29                       missing .:  0/36
+
+                  mean:   46.8889
+              std. dev:   18.5992
+
+           percentiles:        10%       25%       50%       75%       90%
+                                26      31.5        44        62        70
 
 . replace course_result="1" if course_result=="Pass"
 (19 real changes made)
 
+. 
+. 
+. 
 . replace course_result="0" if course_result=="Fail"
 (17 real changes made)
 
+. 
+. 
+. 
 . destring course_result, replace
 course_result has all characters numeric; replaced as byte
 
+. 
+. 
+. 
 . list
 
      +-------------------------------+
@@ -64,6 +109,9 @@ course_result has all characters numeric; replaced as byte
  36. |      36         36          1 |
      +-------------------------------+
 
+. 
+. 
+. 
 . reg course_result test_score
 
       Source |       SS       df       MS              Number of obs =      36
@@ -80,10 +128,11 @@ course_res~t |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
        _cons |   .0626239   .2188873     0.29   0.777    -.3822086    .5074563
 ------------------------------------------------------------------------------
 
+. graph twoway scatter course_result test_score
+
 . log close
       name:  <unnamed>
-       log:  C:\Users\hp\Desktop\Study Material (SNU)\Semester 5\ECO 213 - Basic Data Analysis and Econometrics\End_Term_Project\Q
-> uestion_1\Q1.log
+       log:  C:\Users\hp\Desktop\Econometrics-End-Term-Project\Question_1\Q1.log
   log type:  text
- closed on:   4 Nov 2020, 13:33:02
-----------------------------------------------------------------------------------------------------------------------------------
+ closed on:   2 Dec 2020, 23:08:35
+--------------------------------------------------------------------------------
